@@ -1,0 +1,178 @@
+import java.util.*;
+public class arrays
+{
+public static int max(int a[])
+{
+int i,m=a[0];
+for(i=0;i<a.length;i++)
+{
+if(a[i]>m)
+{
+m=a[i];
+}
+}
+return m;
+}
+public static int sum(int a[])
+{
+int i,s=0;
+for(i=0;i<a.length;i++)
+{
+s+=a[i];
+}
+return s;
+}
+public static void sort(int a[])
+{
+int i,t,j;
+for(i=0;i<a.length;i++)
+{
+for(j=0;j<a.length-1-i;j++)
+{
+if(a[j]>a[j+1])
+{
+t=a[j];
+a[j]=a[j+1];
+a[j+1]=t;
+}
+}
+}
+System.out.println("after sorting elements are");
+for(i=0;i<a.length;i++)
+System.out.print(a[i]+" ");
+}
+public static int greatest(int a[],int b[])
+{
+int i,j,g=a[0];
+for(i=0;i<a.length;i++)
+{
+if(a[i]>g)
+g=a[i];
+if(b[i]>g)
+g=b[i];
+}
+return g;
+}
+public static void intersection(int a[],int b[])
+{
+int i,j;
+System.out.print("intersection of two arrays are ");
+for(i=0;i<a.length;i++)
+{
+for(j=0;j<b.length;j++)
+{
+if(a[i]==b[j])
+System.out.print(a[i]+" ");
+}
+}
+}
+public static int digonal(int c[][])
+{
+int s=0,i,j;
+for(i=0;i<c.length;i++)
+{
+for(j=0;j<c[i].length;j++)
+{
+if(i==j)
+{
+s+=c[i][j];
+}
+}
+}
+return s;
+}
+public static int upper(int c[][])
+{
+int i,j,m=c[0][0];
+for(i=0;i<c.length;i++)
+{
+for(j=0;j<c[i].length;j++)
+{
+if(i<=j)
+{
+if(c[i][j]>m)
+m=c[i][j];
+}
+}
+}
+return m;
+}
+public static int lower(int c[][])
+{
+int i,j,l=c[0][0];
+for(i=0;i<c.length;i++)
+{
+for(j=0;j<c[i].length;j++)
+{
+if(i>=j)
+{
+if(c[i][j]>l)
+l=c[i][j];
+}
+}
+}
+return l;
+}
+public static void sidesum(int c[][])
+{
+int i,j,s=0;
+for(i=0;i<c.length;i++)
+{
+s=0;
+for(j=0;j<c[i].length;j++)
+{
+s+=c[i][j];
+}
+System.out.print(s+" ");
+}
+System.out.print("is the sum of side\n");
+for(i=0;i<c.length;i++)
+{
+s=0;
+for(j=0;j<c[i].length;j++)
+{
+s+=c[j][i];
+}
+System.out.print(s+" ");
+}
+System.out.print("is the sum of side\n");
+}
+public static void main(String k[])
+{
+Scanner p=new Scanner(System.in);
+int a[],b[],c[][],m,n,i,j;
+System.out.println("enter the total number of element of arrray");
+n=p.nextInt();
+a=new int[n];
+b=new int[n];
+System.out.println("enter the values in array");
+for(i=0;i<n;i++)
+{
+a[i]=p.nextInt();
+}
+System.out.println(max(a)+" is the maximum number in array");
+System.out.println(sum(a)+" is the sum of elements of array");
+sort(a);
+System.out.println("\nenter elements in second array");
+for(i=0;i<n;i++)
+b[i]=p.nextInt();
+System.out.println(greatest(a,b)+" is the greatest number in both arrays");
+intersection(a,b);
+System.out.println("\nenter rows and coloumn of 2d array");
+n=p.nextInt();
+m=p.nextInt();
+c=new int[n][m];
+System.out.println("enter elements in 2d arrays");
+for(i=0;i<n;i++)
+{
+for(j=0;j<m;j++)
+{
+c[i][j]=p.nextInt();
+}
+}
+System.out.println(digonal(c)+" is the sum of digonal element");
+System.out.println(upper(c)+" is the maximum number in upper triangle");
+System.out.println(lower(c)+" is the maximum number in lower triangle");
+sidesum(c);
+}
+}
